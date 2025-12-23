@@ -1,28 +1,45 @@
+/**
+ * Author: Sabila Rusyda
+ */
+import Phaser from 'phaser';
 
-import Phaser from "phaser";
-
+// Create configuration object
 const config = {
-  type: Phaser.AUTO,
+  type: Phaser.AUTO, // WebGL (Web Graphics Library) JS Api for rendering 2D and 3D graphics
   width: 800,
   height: 600,
   physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { y: 200 }
-    }
+    default: 'arcade', // Arcade physics plugin, manages physics simulation
   },
+  // If you don't use custom function name, you can just write it like this "scene: {preload, create}"
   scene: {
-    preload: preload,
-    create: create
+    preload: srpreload,
+    create: srcreate,
   }
-};
+}
 
+// Loading assets, such as images, music, animations, etc
+function srpreload() {
+  // 'this' context - scene, it contains functions and properties we can use
+  this.load.image('srsky', 'assets/sky.png');
+}
+
+function srcreate() {
+  // A. Add image to the canvas - x, y, key of the image
+  // this.add.image(0, 0, 'srsky');
+
+  // B. Move image to the middle of the canvas using image's width and height - x:400, y:300
+  // this.add.image(config.width/2, config.height/2, 'srsky');
+
+  // C. Move image to the middle of the canvas
+  // C.01 - By default, the origin point of the middle of the image is '0.5,0.5', it will be shown like A.
+  // this.add.image(0, 0, 'srsky').setOrigin(0.5, 0.5);
+  // C.02 - You can use width & height calculation to make it centered, but why would you...
+  // this.add.image(400, 300, 'srsky').setOrigin(0.5, 0.5);
+  // C.03 - This is the cleanest way
+  // this.add.image(0, 0, 'srsky').setOrigin(0, 0);
+  this.add.image(0, 0, 'srsky').setOrigin(0);
+}
+
+// Instantiates a Phaser Game
 new Phaser.Game(config);
-
-function preload () {
-  this.load.image('sky', 'assets/sky.png');
-}
-
-function create () {
-  this.add.image(400, 300, 'sky');
-}
