@@ -20,6 +20,7 @@ const config = {
 }
 
 let bird = null;
+let totalDeltaTime = null;
 
 /**
  * Loading assets, such as images, music, animations, etc
@@ -67,10 +68,10 @@ function srcreate() {
   // console.log(bird.body);
 
   // C. Apply gravity
-  // bird.body.gravity.y = 200; // 200 pixels per second, higher value will pull the object down faster
+  bird.body.gravity.y = 200; // 200 pixels per second, higher value will pull the object down faster
 
   // D. Apply velocity - distance over time
-  bird.body.velocity.y = 200;
+  // bird.body.velocity.y = 200;
 }
 
 /**
@@ -82,10 +83,18 @@ function srcreate() {
  * - So, 60fps * 16ms = 1000ms
  */
 function srupdate(time, delta) {
-  // console.log('hello');
-  // console.log(delta);
-  // console.log(time);
-  // console.log(bird.body.velocity.y); // as you can see velocity is constant in 200
+  // Only console log every second, not ms
+  if (totalDeltaTime >= 1000) {
+    // Velocity with gravity will increase like:
+    // t0 = 0px/second
+    // t1 = 200px/second
+    // t2 = 400px/second
+    // t3 = 600px/second
+    console.log(bird.body.velocity.y);
+    totalDeltaTime = 0;
+  }
+
+  totalDeltaTime += delta;
 }
 
 // Instantiates a Phaser Game
