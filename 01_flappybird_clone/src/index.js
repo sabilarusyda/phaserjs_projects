@@ -18,13 +18,19 @@ const config = {
   }
 }
 
+let bird = null;
+
 // Loading assets, such as images, music, animations, etc
 function srpreload() {
   // 'this' context - scene, it contains functions and properties we can use
   this.load.image('srsky', 'assets/sky.png');
+  this.load.image('srbird', 'assets/bird.png');
 }
 
 function srcreate() {
+  // ============================
+  // Setup Background Image
+
   // A. Add image to the canvas - x, y, key of the image
   // this.add.image(0, 0, 'srsky');
 
@@ -39,6 +45,16 @@ function srcreate() {
   // C.03 - This is the cleanest way
   // this.add.image(0, 0, 'srsky').setOrigin(0, 0);
   this.add.image(0, 0, 'srsky').setOrigin(0);
+
+  // ============================
+  // Setup Bird Object
+  
+  // A. Add bird in the middle of the canvas
+  // this.add.sprite(config.width/2, config.height/2, 'srbird').setOrigin(0);
+  // B. Move bird to the left, around 1/10 of the width
+  // this.add.sprite(config.width/10, config.height/2, 'srbird').setOrigin(0);
+  bird = this.add.sprite(config.width*0.1, config.height/2, 'srbird').setOrigin(0);
+  debugger
 }
 
 // Instantiates a Phaser Game
