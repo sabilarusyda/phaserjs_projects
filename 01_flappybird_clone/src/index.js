@@ -30,6 +30,7 @@ function srpreload() {
 function srcreate() {
   // ============================
   // Setup Background Image
+  // ----------------------------
 
   // A. Add image to the canvas - x, y, key of the image
   // this.add.image(0, 0, 'srsky');
@@ -48,12 +49,26 @@ function srcreate() {
 
   // ============================
   // Setup Bird Object
+  // ----------------------------
   
   // A. Add bird in the middle of the canvas
   // this.add.sprite(config.width/2, config.height/2, 'srbird').setOrigin(0);
+
   // B. Move bird to the left, around 1/10 of the width
-  // this.add.sprite(config.width/10, config.height/2, 'srbird').setOrigin(0);
-  bird = this.add.sprite(config.width*0.1, config.height/2, 'srbird').setOrigin(0);
+  // B.01 - You can use math like 'X / 10' or 'X * 0.1'
+  // bird = this.add.sprite(config.width*0.1, config.height/2, 'srbird').setOrigin(0);
+  // B.02 - If we add Sprite without 'physics', 'bird.body' will return NULL
+  // console.log(bird.body);
+  // B.03 - Apply 'physics'
+  bird = this.physics.add.sprite(config.width*0.1, config.height/2, 'srbird').setOrigin(0);
+  // console.log(bird.body);
+
+  // C. Apply gravity
+  // bird.body.gravity.y = 200; // 200 pixels per second, higher value will pull the object down faster
+
+  // D. Apply velocity - distance over time
+  bird.body.velocity.y = 200;
+
   debugger
 }
 
