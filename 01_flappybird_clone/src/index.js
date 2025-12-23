@@ -83,18 +83,20 @@ function srcreate() {
  * - So, 60fps * 16ms = 1000ms
  */
 function srupdate(time, delta) {
+  totalDeltaTime += delta;
+
   // Only console log every second, not ms
-  if (totalDeltaTime >= 1000) {
-    // Velocity with gravity will increase like:
-    // t0 = 0px/second
-    // t1 = 200px/second
-    // t2 = 400px/second
-    // t3 = 600px/second
-    console.log(bird.body.velocity.y);
-    totalDeltaTime = 0;
+  if (totalDeltaTime < 1000) {
+    return;
   }
 
-  totalDeltaTime += delta;
+  // How velocity works with gravity force, it will increase like:
+  // t0 = 0px/second
+  // t1 = 200px/second
+  // t2 = 400px/second
+  // t3 = 600px/second
+  console.log(bird.body.velocity.y);
+  totalDeltaTime = 0;
 }
 
 // Instantiates a Phaser Game
