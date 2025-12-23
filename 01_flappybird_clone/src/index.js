@@ -11,16 +11,19 @@ const config = {
   physics: {
     default: 'arcade', // Arcade physics plugin, manages physics simulation
   },
-  // If you don't use custom function name, you can just write it like this "scene: {preload, create}"
+  // If you don't use custom function name, you can just write it like this "scene: {preload, create, update}"
   scene: {
     preload: srpreload,
     create: srcreate,
+    update: srupdate,
   }
 }
 
 let bird = null;
 
-// Loading assets, such as images, music, animations, etc
+/**
+ * Loading assets, such as images, music, animations, etc
+ */
 function srpreload() {
   // 'this' context - scene, it contains functions and properties we can use
   this.load.image('srsky', 'assets/sky.png');
@@ -68,8 +71,21 @@ function srcreate() {
 
   // D. Apply velocity - distance over time
   bird.body.velocity.y = 200;
+}
 
-  debugger
+/**
+ * Update function will be called every frame
+ * - Let's say, if your screen is 60fps (frame per second) then it will be called 60 times per second
+ * 
+ * Delta time is the time from the last frame
+ * - Delta should be around 16 milliseconds
+ * - So, 60fps * 16ms = 1000ms
+ */
+function srupdate(time, delta) {
+  // console.log('hello');
+  // console.log(delta);
+  // console.log(time);
+  // console.log(bird.body.velocity.y); // as you can see velocity is constant in 200
 }
 
 // Instantiates a Phaser Game
