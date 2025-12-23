@@ -23,16 +23,10 @@ Desktop.ini
 *.tmp
 
 # =========================
-# Logs
-# =========================
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# =========================
-# Node.js
+# Node.js dependencies
 # =========================
 node_modules/
+jspm_packages/
 
 # =========================
 # Build output
@@ -46,8 +40,67 @@ build/
 .env
 .env.local
 .env.*.local
+.env.test
 
 # =========================
-# Coverage
+# Logs
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# =========================
+# Coverage & test artifacts
 # =========================
 coverage/
+*.lcov
+.nyc_output/
+lib-cov/
+
+# =========================
+# Runtime data
+# =========================
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# =========================
+# Diagnostic reports
+# =========================
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# =========================
+# Package manager & tooling caches
+# =========================
+.npm/
+.eslintcache
+.node_repl_history
+.cache/
+.yarn-integrity
+
+# =========================
+# TypeScript (safe even if unused)
+# =========================
+typings/
+*.tsbuildinfo
+
+# =========================
+# Bundled / packed output
+# =========================
+*.tgz
+
+# =========================
+# Storybook / tooling output
+# =========================
+.out
+.storybook-out/
+
+# =========================
+# Temp folders
+# =========================
+tmp/
+temp/
