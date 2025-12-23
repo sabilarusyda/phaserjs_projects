@@ -10,6 +10,11 @@ const config = {
   height: 600,
   physics: {
     default: 'arcade', // Arcade physics plugin, manages physics simulation
+    arcade: {
+      gravity: {
+        y: 200
+      }
+    }
   },
   // If you don't use custom function name, you can just write it like this "scene: {preload, create, update}"
   scene: {
@@ -68,7 +73,7 @@ function srcreate() {
   // console.log(bird.body);
 
   // C. Apply gravity
-  bird.body.gravity.y = 200; // 200 pixels per second, higher value will pull the object down faster
+  // bird.body.gravity.y = 200; // 200 pixels per second, higher value will pull the object down faster
 
   // D. Apply velocity - distance over time
   // bird.body.velocity.y = 200;
